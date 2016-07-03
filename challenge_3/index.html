@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html> <!-- add ng-app="appThree" to the body tag here -->
+<html ng-app="appThree"> <!-- add ng-app="appThree" to the body tag here -->
 <head>
   <title>Challenge 3</title>
   <meta charset="utf8" />
@@ -10,7 +10,7 @@
   <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <!-- add Angular javascript here -->
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.js"></script>
   <script src="js/app.js"></script>
 </head>
 <body>
@@ -47,12 +47,12 @@
   <section class="exercises">
     <h4>Exercise #1:</h4>
 
-    <div id="change_me" data-ng-model="info">
+    <div id="change_me" data-ng-controller="infoController as info">
       <p>Here's an example of data-binding in the view:</p>
-      Name: <input type="text" data-ng-model="info.name"></br>
-      Height: <input type="number" steps="any" data-ng-model="info.height"></br>
+      Name: <input type="text" data-ng-controller="infoController as info"></br>
+      Height: <input type="number" steps="any" data-ng-controller="infoController as info"></br>
       <li ng-show="info.name">
-        Hello {{info.name}}!
+        Hello {{infoController.name}}!
       </li>
       <li ng-show="info.height">
         You are {{info.height >= 5.6 ? "really very" : info.height + "ft" }} tall!
@@ -80,8 +80,8 @@
     <h4>Exercise #2:</h4>
     <p>Instant Math!</p>
     <p>Can you get these simple calculators to work using only a view model (ng-model)?</p>
-    <div>
-      <input type="number"> + <input type="number"> = {{ "?" }}
+    <div data-ng-model="calculator">
+      <input type="number" ng-show="calculator.number"> + <input type="number" ng-show="calculator"> = {{ calculator.number + calculator.number}}
     </div>
 
     <div>
